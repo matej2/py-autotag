@@ -14,14 +14,15 @@ from TagSuggestions.models import HashtagSearch
 tag_search = []
 tag_search.append(HashtagSearch("handmade", 10))
 tag_search.append(HashtagSearch("homemade", 10))
-tag_search.append(HashtagSearch("slovenia", 5))
+tag_search.append(HashtagSearch("slovenia", 50))
 
 hashtag_list = []
-
+num_of_hashtags = 10
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def random_hashtags(request):
+    shuffled_list = []
 
     for search in tag_search:
         URL = f'https://www.instagram.com/web/search/topsearch/?context=blended&query=%23{search.word}&rank_token=0.08962517317904317&include_reel=true'
@@ -31,14 +32,15 @@ def random_hashtags(request):
 
         hashtags = data["hashtags"]
 
-        for i in range(50):
-            if i >= search.first:
-                break
+        for i in range(search.first):
             text = hashtags[i]["hashtag"]["name"]
+            print(f"adding {text}")
             hashtag_list.append(text)
 
     shuffle(hashtag_list)
+    shuffled_list = list(map(lambda x: '#' + x, hashtag_list[:num_of_hashtags]))
 
-    return JsonResponse((
-        hashtag_list[:30]
-    ), safe=False)
+    return JsonResponse({
+        'list': shuffled_list,
+        'string': ' '.join(shuffled_list),
+    }, safe=False)
