@@ -6,15 +6,21 @@ from django.shortcuts import render
 import requests
 import re
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 from TagSuggestions.models import HashtagSearch
 
 tag_search = []
-tag_search.append(HashtagSearch("handmade", 50))
-tag_search.append(HashtagSearch("homemade", 30))
+tag_search.append(HashtagSearch("handmade", 10))
+tag_search.append(HashtagSearch("homemade", 10))
 tag_search.append(HashtagSearch("slovenia", 5))
 
 hashtag_list = []
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def random_hashtags(request):
 
     for search in tag_search:
