@@ -11,18 +11,26 @@ from rest_framework.permissions import IsAuthenticated
 
 from TagSuggestions.models import HashtagSearch
 
-tag_search = []
-tag_search.append(HashtagSearch("handmade", 10))
-tag_search.append(HashtagSearch("homemade", 10))
-tag_search.append(HashtagSearch("slovenia", 50))
-
 hashtag_list = []
 num_of_hashtags = 10
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def random_hashtags(request):
     shuffled_list = []
+
+    tag_search = []
+    request_tags = []
+
+    try:
+        request_tags = request.data
+    except IndexError:
+        print('No body header found!')
+
+    for hashtag in request_tags:
+        print(hashtag)
+        tag_search.append(HashtagSearch(hashtag['name'], hashtag['count']))
 
     for search in tag_search:
         URL = f'https://www.instagram.com/web/search/topsearch/?context=blended&query=%23{search.word}&rank_token=0.08962517317904317&include_reel=true'
