@@ -6,3 +6,18 @@
 2. Make virtual environment: `pipenv shell`
 3. Install dependencies: `pipenv install`
 4. Run applcation: `python3 manage.py runserver`
+
+## Endpoints
+
+GET: `localhost/tags/random`
+
+Request body:
+
+```
+[
+  {
+    'name': 'handmade'
+    'count': 5
+  }
+]
+```
