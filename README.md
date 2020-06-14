@@ -27,14 +27,14 @@ Headers: `Authentication: Token <token>`
 Request body:
 
 `name`: Name of the keyword search
-`count`: Number of random hashtags included in response
+`freq`: Number of random hashtags included in response
 
 Example:
 ```
 [
   {
     'name': 'handmade'
-    'count': 5
+    'freq': 5
   }
 ]
 ```

@@ -30,7 +30,7 @@ def random_hashtags(request):
 
     for hashtag in request_tags:
         print(hashtag)
-        tag_search.append(HashtagSearch(hashtag['name'], hashtag['count']))
+        tag_search.append(HashtagSearch(hashtag['name'], hashtag['freq']))
 
     for search in tag_search:
         URL = f'https://www.instagram.com/web/search/topsearch/?context=blended&query=%23{search.word}&rank_token=0.08962517317904317&include_reel=true'
