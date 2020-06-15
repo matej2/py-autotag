@@ -1,8 +1,8 @@
 # py-autotag
 
-> When I was tagging images with AI hashtag generators I got a lot of incorrect or even inappropriate results. I was thinking I could somehow determine topic of hashtags withouth too much depending on AI (and its mistakes)
+> When I was tagging images with AI Instagram hashtag generators I got a lot of incorrect or even inappropriate results. I was thinking I could somehow determine topic of hashtags withouth too much depending on AI (and its mistakes)
 
-This application provides random hashtags based on keywords that you provide. Randomness of hashtags helps prevent shadowblocking (altrought I dont assure it).
+This application provides random Instagram hashtags based on keywords that you provide. Randomness of hashtags helps prevent shadowblocking (altrought I dont assure it).
 
 You determine topics for your account. Those topics are search keywords that are used in this application. You can also define how much of each hashtags are going to be added.
 
